@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flying Bullival</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Adding a retro font for that flappy feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #4c8691; /* Teal background from screenshot */
+            font-family: 'Press Start 2P', cursive;
+            touch-action: manipulation;
+        }
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4c8691;
+        }
+        canvas {
+            display: block;
+            background-color: #4c8691;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        .btn-retro {
+            pointer-events: auto;
+            background: #eec400; /* Yellow from screenshot */
+            color: white;
+            padding: 12px 24px;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 0 #b38f00;
+            font-size: 14px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .btn-retro:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #b38f00;
+        }
+        #game-over-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            text-align: center;
+        }
+        #score-board {
+            background: #e6da71; /* Pale yellow board from screenshot */
+            border: 3px solid #000;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            width: 280px;
+            box-shadow: inset -4px -4px 0px rgba(0,0,0,0.1);
+        }
+        .score-val {
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 2px 2px 0 #000;
+            margin: 10px 0;
+        }
+        .score-label {
+            color: #d8482d; /* Reddish label */
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        video {
+            max-width: 250px;
+            border-radius: 8px;
+            border: 3px solid #000;
+            margin-bottom: 15px;
+            background: #000;
+        }
+        #score-display {
+            position: absolute;
+            top: 40px;
+            color: white;
+            font-size: 40px;
+            text-shadow: 3px 3px 0 #000;
+            pointer-events: none;
+            z-index: 20;
+        }
+        .credit-text {
+            color: #fff;
+            font-size: 8px;
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            text-shadow: 1px 1px 0 #000;
+        }
+    </style>
+</head>
+<body>
+
+<div id="game-container">
+    <canvas id="gameCanvas"></canvas>
+    
+    <div id="ui-layer">
+        <div id="score-display">0</div>
+        <div id="start-screen" class="flex flex-col items-center">
+            <h1 class="text-white text-2xl mb-12 text-center leading-relaxed">FLYING<br>BULLIVAL</h1>
+            <button class="btn-retro" onclick="startGame()">START GAME</button>
+            <p class="text-white text-[10px] mt-6">Space or Tap to Jump</p>
+            <p class="credit-text">Created by Kanishk batch 2025</p>
+        </div>
+    </div>
+
+    <div id="game-over-screen">
+        <h2 style="color: #e8615a; font-size: 24px; margin-bottom: 20px; text-shadow: 2px 2px 0 #000;">GAME OVER</h2>
+        
+        <div id="score-board">
+            <div id="lose-video-container">
+                <video id="loseVideo" playsinline>
+                    <source src="https://github.com/kanishk2007dev/Mess-/raw/refs/heads/main/gemini_generated_video_613221c3.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="score-label">SCORE</div>
+            <div id="final-score" class="score-val">0</div>
+            <div class="score-label">BEST</div>
+            <div id="best-score" class="score-val">0</div>
+        </div>
+
+        <button class="btn-retro" onclick="restartGame()">PLAY AGAIN</button>
+        <p class="credit-text mt-8">Created by Kanishk batch 2025</p>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreDisplay = document.getElementById('score-display');
+    const startScreen = document.getElementById('start-screen');
+    const gameOverScreen = document.getElementById('game-over-screen');
+    const loseVideo = document.getElementById('loseVideo');
+    const finalScoreTxt = document.getElementById('final-score');
+    const bestScoreTxt = document.getElementById('best-score');
+
+    // Asset URLs
+    const BIRD_URL = "https://raw.githubusercontent.com/kanishk2007dev/Mess-/refs/heads/main/Screenshot_20260317_093757_Google.jpg";
+    const PILLAR_URLS = [
+        "https://raw.githubusercontent.com/kanishk2007dev/Mess-/refs/heads/main/Screenshot_20260317_093238_Photos.jpg",
+        "https://raw.githubusercontent.com/kanishk2007dev/Mess-/refs/heads/main/IMG-20260317-WA0006.jpg", // Swapped image URL
+        "https://raw.githubusercontent.com/kanishk2007dev/Mess-/refs/heads/main/Screenshot_20260317_091819_Photos.jpg",
+        "https://raw.githubusercontent.com/kanishk2007dev/Mess-/refs/heads/main/Screenshot_20260317_091755_Photos.jpg"
+    ];
+
+    // Preload Images
+    const birdImg = new Image();
+    birdImg.src = BIRD_URL;
+    
+    const pillarImages = PILLAR_URLS.map(url => {
+        const img = new Image();
+        img.src = url;
+        return img;
+    });
+
+    // Game Constants - Tuned for easier playing
+    const GAME_SPEED = 1.6;    
+    const GRAVITY = 0.17;       
+    const JUMP = -4.4;          
+    const PIPE_SPACING = 300;   
+    const PIPE_WIDTH = 65;
+    const PIPE_GAP = 210;       
+    const BIRD_SIZE = 42;
+    const GROUND_HEIGHT = 80;
+
+    // Game State
+    let bird = { x: 50, y: 0, velocity: 0, radius: BIRD_SIZE / 2 };
+    let pipes = [];
+    let score = 0;
+    let bestScore = localStorage.getItem('bullivalBest') || 0;
+    let isGameOver = false;
+    let isGameRunning = false;
+    let animationId;
+    let groundOffset = 0;
+
+    function resizeCanvas() {
+        canvas.width = Math.min(window.innerWidth, 450);
+        canvas.height = window.innerHeight;
+        bird.x = canvas.width / 4;
+        if (!isGameRunning) bird.y = canvas.height / 2;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function createPipe() {
+        const minHeight = 80;
+        const maxHeight = (canvas.height - GROUND_HEIGHT) - PIPE_GAP - minHeight;
+        const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
+        const imgIndex = Math.floor(Math.random() * pillarImages.length);
+
+        pipes.push({
+            x: canvas.width,
+            top: topHeight,
+            bottom: (canvas.height - GROUND_HEIGHT) - (topHeight + PIPE_GAP),
+            passed: false,
+            img: pillarImages[imgIndex]
+        });
+    }
+
+    function update() {
+        if (!isGameRunning || isGameOver) return;
+
+        groundOffset = (groundOffset + GAME_SPEED) % 24;
+
+        bird.velocity += GRAVITY;
+        bird.y += bird.velocity;
+
+        if (bird.y + bird.radius > canvas.height - GROUND_HEIGHT || bird.y - bird.radius < 0) {
+            endGame();
+        }
+
+        if (pipes.length === 0 || canvas.width - pipes[pipes.length - 1].x >= PIPE_SPACING) {
+            createPipe();
+        }
+
+        pipes.forEach((pipe) => {
+            pipe.x -= GAME_SPEED;
+
+            const birdRect = {
+                left: bird.x - bird.radius + 8,
+                right: bird.x + bird.radius - 8,
+                top: bird.y - bird.radius + 8,
+                bottom: bird.y + bird.radius - 8
+            };
+
+            const topPipeRect = { left: pipe.x, right: pipe.x + PIPE_WIDTH, top: 0, bottom: pipe.top };
+            const bottomPipeRect = { left: pipe.x, right: pipe.x + PIPE_WIDTH, top: (canvas.height - GROUND_HEIGHT) - pipe.bottom, bottom: canvas.height - GROUND_HEIGHT };
+
+            if (
+                (birdRect.right > topPipeRect.left && birdRect.left < topPipeRect.right && birdRect.top < topPipeRect.bottom) ||
+                (birdRect.right > bottomPipeRect.left && birdRect.left < bottomPipeRect.right && birdRect.bottom > bottomPipeRect.top)
+            ) {
+                endGame();
+            }
+
+            if (!pipe.passed && pipe.x + PIPE_WIDTH < bird.x) {
+                score++;
+                pipe.passed = true;
+                scoreDisplay.innerText = score;
+            }
+        });
+
+        if (pipes.length > 0 && pipes[0].x + PIPE_WIDTH < -100) {
+            pipes.shift();
+        }
+    }
+
+    function draw() {
+        ctx.fillStyle = "#4c8691";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+        drawCloud(50, 100);
+        drawCloud(250, 200);
+        drawCloud(100, 350);
+
+        pipes.forEach(pipe => {
+            ctx.save();
+            ctx.translate(pipe.x + PIPE_WIDTH / 2, pipe.top / 2);
+            ctx.scale(1, -1);
+            ctx.drawImage(pipe.img, -PIPE_WIDTH / 2, -pipe.top / 2, PIPE_WIDTH, pipe.top);
+            ctx.restore();
+
+            ctx.drawImage(pipe.img, pipe.x, (canvas.height - GROUND_HEIGHT) - pipe.bottom, PIPE_WIDTH, pipe.bottom);
+        });
+
+        ctx.fillStyle = "#ded895"; 
+        ctx.fillRect(0, canvas.height - GROUND_HEIGHT, canvas.width, GROUND_HEIGHT);
+        
+        ctx.strokeStyle = "#9ea064"; 
+        ctx.lineWidth = 2;
+        for (let i = -groundOffset; i < canvas.width; i += 24) {
+            ctx.beginPath();
+            ctx.moveTo(i, canvas.height - GROUND_HEIGHT);
+            ctx.lineTo(i - 15, canvas.height);
+            ctx.stroke();
+        }
+        
+        ctx.fillStyle = "#73bf2e"; 
+        ctx.fillRect(0, canvas.height - GROUND_HEIGHT, canvas.width, 15);
+
+        ctx.save();
+        ctx.translate(bird.x, bird.y);
+        let rotation = Math.min(Math.PI / 4, Math.max(-Math.PI / 4, bird.velocity * 0.18));
+        ctx.rotate(rotation);
+        
+        ctx.beginPath();
+        ctx.arc(0, 0, bird.radius, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(birdImg, -bird.radius, -bird.radius, BIRD_SIZE, BIRD_SIZE);
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.arc(bird.x, bird.y, bird.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        animationId = requestAnimationFrame(() => {
+            update();
+            draw();
+        });
+    }
+
+    function drawCloud(x, y) {
+        ctx.beginPath();
+        ctx.arc(x, y, 20, 0, Math.PI * 2);
+        ctx.arc(x + 25, y - 5, 25, 0, Math.PI * 2);
+        ctx.arc(x + 50, y, 20, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    function jump() {
+        if (isGameRunning && !isGameOver) {
+            bird.velocity = JUMP;
+        }
+    }
+
+    function startGame() {
+        startScreen.style.display = 'none';
+        isGameRunning = true;
+        isGameOver = false;
+        score = 0;
+        scoreDisplay.innerText = "0";
+        bird.y = canvas.height / 2;
+        bird.velocity = 0;
+        pipes = [];
+        draw();
+    }
+
+    function endGame() {
+        isGameOver = true;
+        cancelAnimationFrame(animationId);
+        
+        if (score > bestScore) {
+            bestScore = score;
+            localStorage.setItem('bullivalBest', bestScore);
+        }
+
+        finalScoreTxt.innerText = score;
+        bestScoreTxt.innerText = bestScore;
+        gameOverScreen.style.display = 'flex';
+        
+        loseVideo.currentTime = 0;
+        loseVideo.play().catch(e => {});
+    }
+
+    function restartGame() {
+        gameOverScreen.style.display = 'none';
+        loseVideo.pause();
+        startGame();
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' || e.code === 'ArrowUp') jump();
+    });
+
+    canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!isGameRunning && !isGameOver) startGame();
+        else jump();
+    });
+
+    canvas.addEventListener('mousedown', (e) => {
+        if (!isGameRunning && !isGameOver) startGame();
+        else jump();
+    });
+
+    draw();
+
+</script>
+
+</body>
+</html>
