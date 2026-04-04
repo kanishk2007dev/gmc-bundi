@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarakash 2.0 Festival - BMSA GMC Bundi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Merriweather', 'serif'] },
+                    colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 900: '#003366', gold: '#FFC107' } },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(203, 213, 225, 0.8); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .team-card:hover { transform: translateY(-4px); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.3); }
+        .gallery-img:hover { transform: scale(1.03); }
+        
+        /* Smooth video entry */
+        video { opacity: 0; animation: fadeInVideo 2s ease-in forwards; }
+        @keyframes fadeInVideo { from { opacity: 0; } to { opacity: 0.8; } }
+    </style>
+</head>
+<body class="bg-transparent text-slate-800 font-sans flex flex-col min-h-screen relative">
+
+    <!-- FIXED GLOBAL BACKGROUND VIDEO -->
+    <div class="fixed inset-0 z-[-10] w-full h-full overflow-hidden bg-slate-900">
+        <!-- Ensures video autoplays, loops, mutes (required for autoplay on modern browsers), and plays inline -->
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="https://upload.wikimedia.org/wikipedia/commons/7/7f/GMC_BUNDI_DRONE_%28gmcbundi.in%29.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Overlay to ensure text readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-900/80 via-slate-900/60 to-brand-900/90 mix-blend-multiply"></div>
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-brand-900/90 backdrop-blur-md text-white shadow-md sticky top-0 z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/kanishk2007dev/GMC-n-hssj/main/file_000000003f1c720792a6d2acb3624341%20(1).png" class="h-10 w-10 rounded-full border-2 border-white bg-white p-0.5" alt="Logo">
+                <div>
+                    <h1 class="font-bold text-lg leading-tight tracking-wide">BMSA</h1>
+                    <p class="text-xs text-brand-100">GMC Bundi</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://gmcbundi.dpdns.org/tarakash/" class="hidden sm:flex px-4 py-2 bg-white/10 hover:bg-white/20 rounded text-sm font-medium transition items-center border border-white/20">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Tarakash 1.0 (Archive)
+                </a>
+                <a href="https://gmcbundi.dpdns.org/AssociatedFunctions/" class="px-4 py-2 bg-brand-700 hover:bg-brand-600 rounded text-sm font-medium transition flex items-center shadow-sm">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Functions
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="relative min-h-[400px] md:min-h-[550px] flex items-center justify-center mb-4">
+        <div class="relative max-w-7xl mx-auto px-4 text-center z-10 py-24">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-brand-gold text-brand-900 text-xs font-bold uppercase tracking-widest mb-6 animate-fade-in-up shadow-[0_0_15px_rgba(255,193,7,0.5)]">Annual Festival</span>
+            <h1 class="text-5xl md:text-8xl font-serif font-black text-white mb-6 drop-shadow-2xl animate-fade-in-up tracking-tighter" style="animation-delay: 0.1s;">TARAKASH 2.0</h1>
+            <p class="text-lg md:text-2xl text-brand-100 max-w-3xl mx-auto font-light animate-fade-in-up leading-relaxed drop-shadow-md" style="animation-delay: 0.2s;">
+                Unleashing the spirit of competition, creativity, and camaraderie. Witness the battle of the houses!
+            </p>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full relative z-10">
+        
+        <!-- Teams Grid -->
+        <div class="mb-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white inline-block border-b-4 border-brand-gold pb-1 drop-shadow-lg">The 4 Houses (2026)</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Flaming Falcons -->
+                <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 overflow-hidden team-card transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 w-full bg-black">
+                         <img src="https://raw.githubusercontent.com/kanishk2007dev/gmcbundi-main-website/main/Tarakash/WhatsApp%20Image%202026-02-03%20at%203.18.04%20PM.jpeg" class="h-full w-full object-contain" alt="Flaming Falcons Logo">
+                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                             <h3 class="text-2xl font-bold text-white text-center uppercase tracking-wide drop-shadow-md">Flaming Falcons</h3>
+                         </div>
+                    </div>
+                    <div class="p-6 flex-grow bg-white/80">
+                        <div class="h-96 overflow-y-auto pr-2 custom-scrollbar bg-white/90 p-4 rounded-lg border border-slate-100 shadow-inner text-sm leading-relaxed text-slate-700">
+                            <li class="font-bold text-red-700 border-b border-red-200 pb-2 mb-3 sticky top-0 bg-white/95 backdrop-blur-sm list-none z-10">Captain: Abhishek Ajmera</li>
+                            Ankit yadav, Vishal sharma, Yash Kashyap, Bhavyavardhan singh, Virendra choudhary, Surendra khokhar, Praful Dhobi, Manish meena, Murlidhar yadav, Mahesh jorwal, Parishita Mina, Yogita yadav, Vinit choudhary, Saksham Mirdha, Khushi Tikania, Kavya Lodhi, Ankur Sharma, komal ameta, krishan Sharma, Vikash shyoran, Muskan Sevda, Sarita Kanwar, Prachi Sharma, PRIYA CHANDAK, Nikita yadav, Manish Verma, Ekanand lodhwal, Lipakshi Mehra, Shree kishan gehlot, Neha Sain, Abhishek Ajmera, Sara Jalori, Durgesh Dangi, Rigved puri goswami, Devesh Choudhary, Pranjal Jain, Megha gupta, Divya Sharma, Aras Khan, Lokesh kumar Gurjar, Darshan Sahu, Lal kishan Choudhary, Vikash Yadav, Pooja choudhary, Upasana meena, Bharti, Praveeen Purohit, Siddharth Deval, Sagar Sharma, Shyam Sundar, Shivang, Durgesh Charpota, Aman Chaudhary, Garvit Jorwal, Mayank Meena, Daksha Yogi, Anvesh Agarwal, Sarthak Yadav, Vasu Mittal, Mohit beniwal, Harshit sainger, Kanishk, Renu Choudhary, Hitisha Khinchi, Priyanka Yadav, Ailicia, Diksha Sharma, Ishikia khandelwal, Sakshi Meena, Rinku, Pragya Meena, Divya Paliwal, Aarti Mahicha, Akshara Meena, Samiksha Gupta
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Godzilla Guardians -->
+                <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 overflow-hidden team-card transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 w-full bg-black">
+                         <img src="https://raw.githubusercontent.com/kanishk2007dev/gmcbundi-main-website/main/Tarakash/WhatsApp%20Image%202026-02-03%20at%203.18.05%20PM.jpeg" class="h-full w-full object-contain" alt="Godzilla Guardians Logo">
+                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                             <h3 class="text-2xl font-bold text-white text-center uppercase tracking-wide drop-shadow-md">Godzilla Guardians</h3>
+                         </div>
+                    </div>
+                    <div class="p-6 flex-grow bg-white/80">
+                        <div class="h-96 overflow-y-auto pr-2 custom-scrollbar bg-white/90 p-4 rounded-lg border border-slate-100 shadow-inner text-sm leading-relaxed text-slate-700">
+                            <li class="font-bold text-green-700 border-b border-green-200 pb-2 mb-3 sticky top-0 bg-white/95 backdrop-blur-sm list-none z-10">Captain: Dharmendra Jangid</li>
+                            Himanshu, Bhavya Damor, Mohd Alwish Gouri, Deepak Jarewal, Himanshu gurjar, Vikas Garhwal, Samarth Inani, Rudra Purohit, Radheshyam verma, Rambalwan meena, Jayantilal ninama, Krishan Kumar, Uday Kumar, Gaurav Sharma, Deepanshi Purohit, Saijal tak, bhawana shekhawat, Meenal Verma, Sheeti Agrawal, Yogita Meena, riddhima jangid, Anushka Khandelwal, Suryansh Meena, Priya Malinda, Harsh sharma, Amit Sharma, Utkarsh shukla, Aarya Sharma, Nitesh Pradhan, Satish choudhary, Dharmendra jangid, Raj Goswami, Tarun dhakad, Arti yadav, Lavanya Rajan, Nikita verma, Gunjan agarwal, Mudita Mehra, Tushar sen, Aadil khan, Hariom verma, Saurabh Kumar Meena, Pooja meena, Jitendra Dangi, Shiv Bishnoi, Pawan Kumar, Suhani Tiwari, Meghna Gursahaney, Arpita Choudhary, Aditya veer gurjar, Aamna gouri, Daksh sharma, Manish nainiwal, Ajay verma, Irfan khan, Pradeep kumar dhakar, Anurag indauiya, Vedant khajja, Prakash kumar, Atharv patidar, Akshat gupta, Dinesh verma, Mahaveer meena, Harshita yadav, Manasvi dungarwal, Harshvi meena, Shivani mehra, Tanisha choudhary, Neelam choudhary, Payal choudhary, Bittu bansal, Bhavishka prajapati, Saniya khan, Dhapu choudhary
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hydra Havocs -->
+                <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 overflow-hidden team-card transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 w-full bg-black">
+                         <img src="https://raw.githubusercontent.com/kanishk2007dev/gmcbundi-main-website/main/Tarakash/WhatsApp%20Image%202026-02-03%20at%203.18.04%20PM%20(1).jpeg" class="h-full w-full object-contain" alt="Hydra Havocs Logo">
+                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                             <h3 class="text-2xl font-bold text-white text-center uppercase tracking-wide drop-shadow-md">Hydra Havocs</h3>
+                         </div>
+                    </div>
+                    <div class="p-6 flex-grow bg-white/80">
+                        <div class="h-96 overflow-y-auto pr-2 custom-scrollbar bg-white/90 p-4 rounded-lg border border-slate-100 shadow-inner text-sm leading-relaxed text-slate-700">
+                            <li class="font-bold text-blue-700 border-b border-blue-200 pb-2 mb-3 sticky top-0 bg-white/95 backdrop-blur-sm list-none z-10">Captain: Ritik Labana</li>
+                            Ritik Labana, Harshit Agarwal, Lakshya Goyal, Uday Maheshwari, Vaibhav Singh, Shreyansh Mundhra, Pramod Devasi, Chirag Garg, Naman Paharia, Vansh Vamaniya, Kuldeep Jonwal, Bharat Suthar, Manish Yadav, Kapil Jat, Vatsal Nama, Vikram Saini, Aaryan Vashishtha, Pankaj Gurjar, Prince Bhaskar, Vasu Somani, MD. Arib, Abhishek Tailor, Naman Khandelwal, Deepak Meena, Rohit Samoliya, Rohit Kumar, Abhay Singh, Bhumika Maheshwari, Kanishka Sharma, Anagha Parashar, Sukhveer Kaur, Pooja Chaudhary, Anisha Rahman, Ishita Rathod, Nikita Bijania, Shreya Shenoy, Aditi Mandusia, Ruchika Kumawat, Hardika Jain, Pooja Chaudhary, Priyal Paliwal, Nidhi Damor, Suruchi Sharma, Keerti Yadav, Gungun Yadav, Kumari HImanshi, Naresh Kumar, Shiv Jinjwadia, Vinod Chaudhary, Waqar Ahmed, Adit Gupta, Akshit chanwada, Deepak dewasi, Yash Kumar Choubey, Sanjay Pancholi, Rahul, Aarav Porwal, Sanjay Chauhan, Piyush, Mohammad Farhan Raza, Kishor Yadav, Maninder Verma, Pulkit Jhalani, Parth Mahaver, Mahesh Meena, Kuldeep Bairwa, Vaibhav, Aman Ansari, Aditya Jindal, Khushbu Kanwar, Vanshika Lalwani, Shreenidhi, Gunjan Pancholi, Gauri Varshney, Jahnavi, Jaahnvi Singh, Taniya Bhardwaj, Sakshi Sharma, Hemlata Dhakar, Gauri Jeengar, Vanshika Garg
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kraken Knights -->
+                <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 overflow-hidden team-card transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 w-full bg-black">
+                         <img src="https://raw.githubusercontent.com/kanishk2007dev/gmcbundi-main-website/main/Tarakash/WhatsApp%20Image%202026-02-03%20at%203.18.05%20PM%20(1).jpeg" class="h-full w-full object-contain" alt="Kraken Knights Logo">
+                         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                             <h3 class="text-2xl font-bold text-white text-center uppercase tracking-wide drop-shadow-md">Kraken Knights</h3>
+                         </div>
+                    </div>
+                    <div class="p-6 flex-grow bg-white/80">
+                        <div class="h-96 overflow-y-auto pr-2 custom-scrollbar bg-white/90 p-4 rounded-lg border border-slate-100 shadow-inner text-sm leading-relaxed text-slate-700">
+                            <li class="font-bold text-purple-700 border-b border-purple-200 pb-2 mb-3 sticky top-0 bg-white/95 backdrop-blur-sm list-none z-10">Captain: Garvit Sharma</li>
+                            Garvit Sharma, Ajay Nagar, Vikas Yadav, Aditya Mandusia, Aman Ansari, Aras Khan, Manoj Kumar, Adityaman Singh, Md. Akram, Devansh Singh, Himanshu Meena, Akshay Sankhla, Deepak Devasi, Deepak Jingonia, Vivek Meena, Pradyuman Singh, Bhanwar Singh, Aashish Ninama, Aaryan Sharma, Praveen Jani, Harshit Gupta, Neeraj Meena, Sameer Tak, Rahul Chittora, Naved Qureshi, Alwish Gauri, Garvit Verma, Nirmal Mali, Bharat Patel, Nousheen Khan, Khushi Rajbhanawat, Himanshi Meena, Suman Dhakad, Arshin, Komal Rathore, Pratyusha Singh, Padma Bishnoi, Mehvish Bano, Tanya Sharma, Priyanka Gothwal, Gunjan Saini, Sneha Mittal, Yukta Dantla, Jahnavi Jain, Kirti Mathur, Sonia, Priyanka Lalawat, Ishika Sharma, Shivanshu Upadhyay, Kishore Kumar, Yash Tambia, Naveen Kumar Sharma, Chetan Yadav, Anuj Puri, Nitul Choudhary, Lakshit Samariya, Krishna Gautam, Abhijeet Mina, Suresh Saini, Jaykaran Godara, Mohd Sameer Tak, Suresh Choudhary, Kismat Prajapat, Pratyaksh Jangid, Keshav Dodwariya, Promod Dewasi, Arshin Bahamni, Mohd Akram Silawat, Ashish Ninama, Himanshu Basethia, Tanya Sharma, Mokshaa, Girija Saini, Harshita Morwal, Kanishka, Vindhya Kabra, Muskan Saini, Anushka Shekhawat, Rigveda Jangid, Rajshree Meena, Cheshta Jagenia, Muskan Yadav, Nupur Choudhary
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Winners Section -->
+        <div class="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/20 p-8 md:p-12 mb-20 relative overflow-hidden">
+            <div class="text-center mb-10 relative z-10">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-widest mb-3 border border-brand-100">Hall of Fame</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-900">Sports Tournament Winners 2026</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto mt-4"></div>
+            </div>
+
+            <!-- BMSA Official Header -->
+            <div class="border-4 border-black mb-12 overflow-hidden text-sm bg-white font-sans shadow-sm relative z-10">
+                <div class="flex flex-col md:flex-row items-center border-b-4 border-black p-4">
+                    <div class="w-24 md:w-32 flex-shrink-0 mb-4 md:mb-0 md:mr-6">
+                        <img src="https://raw.githubusercontent.com/kanishk2007dev/GMC-n-hssj/main/file_000000003f1c720792a6d2acb3624341%20(1).png" alt="BMSA Logo" class="w-full object-contain">
+                    </div>
+                    <div class="flex-grow text-center">
+                        <h1 class="text-2xl md:text-4xl font-black text-black tracking-tight mb-1 uppercase">Bundi Medical Students Association</h1>
+                        <p class="text-lg md:text-xl font-serif italic text-black mb-1">A Voice For Medical Excellence</p>
+                        <p class="text-sm md:text-base text-slate-800">Students Conduction body of GMC Bundi</p>
+                        <p class="text-sm md:text-base text-slate-800">Gmail : bmsa.gmcbundi@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y-4 md:divide-y-0 md:divide-x-4 divide-black border-b-4 border-black bg-white text-center py-3">
+                    <div class="py-1"><p class="font-bold text-black text-base">Vinit Choudhary</p><p class="text-xs text-slate-600">President</p></div>
+                    <div class="py-1"><p class="font-bold text-black text-base">Utkarsh Shukla</p><p class="text-xs text-slate-600">Vice President</p></div>
+                    <div class="py-1"><p class="font-bold text-black text-base">Manish Kumar Meena</p><p class="text-xs text-slate-600">General Secretary</p></div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row divide-y-4 lg:divide-y-0 lg:divide-x-4 divide-black bg-white">
+                    <div class="lg:w-1/6 flex items-center justify-center p-4 font-bold text-lg text-center uppercase tracking-wider">Sports<br>Committee</div>
+                    <div class="lg:w-5/6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-4 gap-x-2 p-3 text-center items-start">
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Ritik Labana</p><p class="text-[10px] text-slate-600 leading-tight">Secretary</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Abhishek Ajmera</p><p class="text-[10px] text-slate-600 leading-tight">Secretary</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Divya Sharma</p><p class="text-[10px] text-slate-600 leading-tight">Secretary (Girls Sports)</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Aryan Vasishta</p><p class="text-[10px] text-slate-600 leading-tight">Joint Secretary</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Prince Bhaskar</p><p class="text-[10px] text-slate-600 leading-tight">Joint Secretary</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Riddhima Jangid</p><p class="text-[10px] text-slate-600 leading-tight">Joint Secretary</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Anushka Shekhawat</p><p class="text-[10px] text-slate-600 leading-tight">Batch Head</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Nitual Choudhary</p><p class="text-[10px] text-slate-600 leading-tight">Batch Head</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Shreenidhi Khandelwal</p><p class="text-[10px] text-slate-600 leading-tight">Batch Head</p></div>
+                        <div><p class="font-bold text-black text-xs sm:text-sm">Shivang</p><p class="text-[10px] text-slate-600 leading-tight">Batch Head</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-brand-900 border-l-4 border-brand-gold pl-3">Outdoor Games</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-3">🏏 Cricket</h4>
+                            <p class="text-sm flex justify-between"><span>🥇 1st</span> <span class="font-bold text-blue-700">Hydra Havocs</span></p>
+                            <p class="text-sm flex justify-between mt-1"><span>🥈 2nd</span> <span class="font-bold text-green-700">Godzilla Guardians</span></p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-3">🏐 Volleyball</h4>
+                            <p class="text-sm flex justify-between"><span>🥇 1st</span> <span class="font-bold">Teachers</span></p>
+                            <p class="text-sm flex justify-between mt-1"><span>🥈 2nd</span> <span class="font-bold text-red-700">Flaming Falcons</span></p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4">🏃 Kho-Kho</h4>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-[10px] font-bold text-pink-600 uppercase mb-2">Girls</p>
+                                <p class="text-xs flex justify-between"><span>🥇 1st</span> <span class="font-bold text-red-700">Falcons</span></p>
+                                <p class="text-xs flex justify-between"><span>🥈 2nd</span> <span class="font-bold text-blue-700">Hydra</span></p>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-blue-600 uppercase mb-2">Boys</p>
+                                <p class="text-xs flex justify-between"><span>🥇 1st</span> <span class="font-bold text-blue-700">Hydra</span></p>
+                                <p class="text-xs flex justify-between"><span>🥈 2nd</span> <span class="font-bold text-green-700">Godzilla</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm text-xs hover:shadow-md transition">
+                        <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 uppercase tracking-tighter">🎖️ Athletics Highlights</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <ul class="space-y-1"><li class="font-bold text-brand-600 mb-1">100m Boys</li><li>🥇 Sanjay Pancholi</li><li>🥈 Durgesh Dangi</li></ul>
+                            <ul class="space-y-1"><li class="font-bold text-pink-600 mb-1">100m Girls</li><li>🥇 Gunjan Pancholi</li><li>🥈 Shreenidhi K.</li></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-brand-900 border-l-4 border-brand-gold pl-3">Indoor Games</h3>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm text-xs hover:shadow-md transition">
+                        <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4">🏸 Badminton</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <ul class="space-y-1"><li class="font-bold text-brand-600">Boys Singles</li><li>🥇 Vasu Somani</li><li>🥈 Rohit Singhal</li></ul>
+                            <ul class="space-y-1"><li class="font-bold text-pink-600">Girls Singles</li><li>🥇 Harshita Yadav</li><li>🥈 Tanya Sharma</li></ul>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-3 text-sm">♟️ Chess</h4>
+                            <p class="text-[9px] font-bold text-brand-600 uppercase">1st (Boys)</p><p class="text-xs font-bold mb-1">Abhay Singh</p>
+                            <p class="text-[9px] font-bold text-pink-600 uppercase">1st (Girls)</p><p class="text-xs font-bold">Divya Sharma</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-3 text-sm">🎯 Carrom</h4>
+                            <p class="text-[9px] font-bold text-brand-600 uppercase">1st (Boys)</p><p class="text-xs font-bold mb-1">Tushar Sen</p>
+                            <p class="text-[9px] font-bold text-pink-600 uppercase">1st (Girls)</p><p class="text-xs font-bold">Mokshaa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Memories & Highlights Gallery -->
+        <section id="gallery" class="pt-10 w-full">
+            <div class="text-center mb-12">
+                <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-bold uppercase tracking-widest mb-3 border border-white/30 shadow-sm">Gallery</span>
+                <h2 class="text-3xl font-bold text-white inline-block border-b-4 border-brand-gold pb-1 drop-shadow-lg">Memories & Highlights</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC00069%409416637.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC00069%409416637.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_2559%409859231.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_2559%409859231.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_3168%4010222654.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_3168%4010222654.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_3430%4010767729.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_3430%4010767729.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_4106%4013316303.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_4106%4013316303.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_4674%4013176900.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_4674%4013176900.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_4686%4011749765.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_4686%4011749765.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5185%4012674030.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5185%4012674030.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5480%4012303326.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5480%4012303326.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5627%4010833863.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5627%4010833863.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5730%4010978148.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5730%4010978148.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5744%4012545552.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_5744%4012545552.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6053%4010426859.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6053%4010426859.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6090%4011116254.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6090%4011116254.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6301%4011392386.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6301%4011392386.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6777%4013175708.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6777%4013175708.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6889%4013688280.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6889%4013688280.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6902%4012713136.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_6902%4012713136.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_7086%4011104591.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_7086%4011104591.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_7126%4010925618.JPG')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/DSC_7126%4010925618.JPG" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/69a7bf0cde49e61fc5dc103d.jpg')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/69a7bf0cde49e61fc5dc103d.jpg" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/69a7bf0cde49e61fc5dc104a.jpg')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/69a7bf0cde49e61fc5dc104a.jpg" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/69a7bf0cde49e61fc5dc1054.jpg')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/69a7bf0cde49e61fc5dc1054.jpg" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+                <div class="h-64 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer group relative bg-brand-900 border border-white/20" onclick="openLightbox('https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/69a7bf0cde49e61fc5dc1064.jpg')">
+                    <img src="https://raw.githubusercontent.com/kanishk2007dev/gmc-bundi/refs/heads/main/69a7bf0cde49e61fc5dc1064.jpg" class="w-full h-full object-cover gallery-img transition-transform duration-500" loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors pointer-events-none"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-900/90 backdrop-blur-md text-white py-8 text-center text-sm border-t-4 border-brand-gold mt-auto relative z-10">
+        <p>&copy; 2026 BMSA GMC Bundi. All Rights Reserved.</p>
+    </footer>
+
+    <div id="lightbox" class="fixed inset-0 z-[60] bg-black/90 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" class="max-w-full max-h-full object-contain rounded shadow-2xl transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+        <button class="absolute top-4 right-4 text-white hover:text-brand-gold focus:outline-none z-[70]" onclick="closeLightbox()">
+            <svg class="w-10 h-10 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.remove('hidden');
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                lightbox.classList.add('flex');
+                img.classList.remove('scale-95');
+                img.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            lightbox.classList.add('opacity-0');
+            img.classList.remove('scale-100');
+            img.classList.add('scale-95');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                img.src = '';
+            }, 300);
+        }
+    </script>
+</body>
+</html>
